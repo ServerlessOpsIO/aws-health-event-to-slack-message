@@ -1,0 +1,24 @@
+{
+    "version": "0",
+    "id": "537230ef-1a58-b992-33c2-0d3b715feabb",
+    "detail-type": "AWS Health Event",
+    "source": "aws.health",
+    "account": "349603509961",
+    "time": "2018-04-25T10:00:00Z",
+    "region": "us-east-1",
+    "resources": [],
+    "detail": {
+        "eventArn": "arn:aws:health:global::event/AWS_ACM_OPERATIONAL_NOTIFICATION_297d5473-d891-4186-89ed-3be0a7787eed",
+        "service": "ACM",
+        "eventTypeCode": "AWS_ACM_OPERATIONAL_NOTIFICATION",
+        "eventTypeCategory": "accountNotification",
+        "startTime": "Wed, 25 Apr 2018 10:00:00 GMT",
+        "eventDescription": [
+            {
+                "language": "en_US",
+                "latestDescription": "This message is a follow-up to our communication about Certificate Transparency(CT) for AWS Certificate Manager(ACM) certificates.  Google Chrome will require logging of all publicly trusted certificates issued on or after April 30, 2018 in at least two Certificate Transparency(CT) logs[1]. Any certificate issued after that date that is not in the Certificate Transparency(CT) logs will produce an error message in the Google Chrome browser.  As of today April 24, 2018 AWS Certificate Manager(ACM) now publishes certificates to Certificate Transparency(CT) logs on issuance, and on renewal. No action from you is required if you want AWS Certificate Manager(ACM) to publish your certificates to Certificate Transparency(CT) logs, which will avoid Google Chrome displaying error messages for your certificates.  Certificate Transparency(CT) logs are available for public download. Some information from your certificates, including your domain names (e.g. www.example.com) will be in these logs. Please note, these logs *do not* contain the private key for your certificate. We recognize that there can be times when you do not want logging of your certificate. You can disable Certificate Transparency(CT) logging for AWS Certificate Manager(ACM) certificates. For instructions and examples please refer to the AWS Security blog post[2] or the AWS Certificate Manager(ACM) User Guide[3].  [1] https://www.certificate-transparency.org/ [2] https://aws.amazon.com/blogs/security/tag/certificate-transparency/ [3] https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html"
+            }
+        ]
+    }
+}
+

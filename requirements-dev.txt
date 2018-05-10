@@ -1,0 +1,7 @@
+flake8
+jsonschema
+moto
+mypy
+pylint
+pytest
+

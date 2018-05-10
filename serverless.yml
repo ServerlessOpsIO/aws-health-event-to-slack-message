@@ -1,0 +1,57 @@
+# Receive and publish AWS health events
+service: aws-health-event-to-slack-message
+
+plugins:
+  - serverless-python-requirements
+
+
+custom:
+  stage: "${opt:stage, env:SLS_STAGE, 'dev'}"
+  profile: "${opt:aws-profile, env:AWS_PROFILE, env:AWS_DEFAULT_PROFILE, 'default'}"
+  log_level: "${env:LOG_LEVEL, 'INFO'}"
+
+  pythonRequirements:
+    dockerizePip: false
+
+
+provider:
+  name: aws
+  profile: ${self:custom.profile}
+  stage: ${self:custom.stage}
+  runtime: python3.6
+  environment:
+    LOG_LEVEL: ${self:custom.log_level}
+  stackTags:
+    x-service: aws-health-event-publisher
+    x-stack: ${self:service}-${self:provider.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "SNS:Publish"
+      Resource:
+        Ref: HealthEventSnsTopic
+
+
+
+functions:
+  SnsHealthEventPublisher:
+    handler: handlers/aws_health_event_publisher.handler
+    description: "Receive and publish AWS Health events"
+    memorySize: 128
+    timeout: 10
+    environment:
+      AWS_SNS_TOPIC_ARN:
+        Ref: HealthEventSnsTopic
+
+resources:
+  Resources:
+    HealthEventSnsTopic:
+      Type: "AWS::SNS::Topic"
+
+
+  Outputs:
+    HealthEventSnsTopicArn:
+      Description: "AWS SNS Topic ARN"
+      Value:
+        Ref: HealthEventSnsTopic
+      Export:
+        Name: "${self:service}-${self:provider.stage}-HealthEventSnsTopicArn"

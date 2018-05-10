@@ -1,0 +1,3 @@
+# serverless-python-requirements will strip boto3, but we have it here to make local
+# testing tools happy.
+boto3

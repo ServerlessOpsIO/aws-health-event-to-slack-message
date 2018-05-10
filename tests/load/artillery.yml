@@ -1,0 +1,19 @@
+config:
+  payload:
+    - path: "./testing-data.csv"
+      fields:
+        - "url"
+  target: "{{url}}"
+  phases:
+    - duration: 60
+      arrivalRate: 1
+  defaults:
+    headers:
+      <header>: <value>
+scenarios:
+  - flow:
+    - post:
+        url: '/<ENDPOINT>'
+        json:
+          <key>: <VALUE>
+
