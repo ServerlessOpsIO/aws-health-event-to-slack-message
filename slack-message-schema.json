@@ -1,7 +1,7 @@
 {
   "description": "Slack message format accepted by this service.",
   "type": "object",
-  "required": ["text"],
+  "required": ["text", "attachments"],
   "properties": {
     "text": {"type": "string"},
     "attachments": {

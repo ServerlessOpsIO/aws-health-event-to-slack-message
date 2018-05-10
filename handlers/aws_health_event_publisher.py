@@ -27,7 +27,7 @@ def _format_slack_message(event: dict) -> dict:
     '''Return a slack message for publishing'''
     msg = {}
     msg['text'] = "AWS Health Event Notification"
-    msg['attachment'] = []
+    msg['attachments'] = []
 
     event_data = {
         "title": event.get('detail-type'),
@@ -72,7 +72,7 @@ def _format_slack_message(event: dict) -> dict:
         )
 
     event_data['fields'] = event_data_fields
-    msg['attachment'].append(event_data)
+    msg['attachments'].append(event_data)
 
 
     for description in event.get('detail').get('eventDescription'):
@@ -80,7 +80,7 @@ def _format_slack_message(event: dict) -> dict:
             'title': 'Description',
             'text': description.get('latestDescription')
         }
-        msg['attachment'].append(event_description)
+        msg['attachments'].append(event_description)
 
     _logger.debug('Slack message: {}'.format(json.dumps(msg)))
 
