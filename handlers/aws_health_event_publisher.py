@@ -32,7 +32,9 @@ def _format_slack_message(event: dict) -> dict:
     event_data = {
         "title": event.get('detail-type'),
         "author": "Amazon Web Services",
+        "text": event.get('detail').get('eventArn')
     }
+
     event_data_fields = []
     event_data_fields.append(
         _create_event_data_field('Type', event.get('detail-type'))
@@ -59,10 +61,6 @@ def _format_slack_message(event: dict) -> dict:
     event_data_fields.append(
         _create_event_data_field('Event Type Category',
                                  event.get('detail').get('eventTypeCategory'))
-    )
-
-    event_data_fields.append(
-        _create_event_data_field('Event ARN', event.get('detail').get('eventArn'))
     )
 
 
