@@ -82,12 +82,15 @@ def _format_slack_message(event: dict) -> dict:
         }
         msg['attachment'].append(event_description)
 
+    _logger.debug('Slack message: {}'.format(json.dumps(msg)))
+
     return msg
 
 
 
 def _publish_sns_message(sns_topic_arn: str, message: dict) -> None:
     '''Publish message to SNS topic'''
+    _logger.debug('SNS message: {}'.format(json.dumps(message)))
     r = sns_client.publish(
         TopicArn=sns_topic_arn,
         Message=json.dumps(message)
