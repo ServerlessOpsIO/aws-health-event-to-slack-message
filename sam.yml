@@ -9,8 +9,6 @@ Resources:
     Properties:
       Handler: handlers/aws_health_event_publisher.handler
       Runtime: python3.6
-      CodeUri: >-
-        /Users/tom/Source/serverlessops/aws-health-event-publisher/.serverless/aws-health-event-to-slack-message.zip
       Description: Receive and publish AWS Health events
       MemorySize: 128
       Timeout: 10
