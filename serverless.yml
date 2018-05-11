@@ -31,7 +31,6 @@ provider:
         Ref: HealthEventSnsTopic
 
 
-
 functions:
   SnsHealthEventPublisher:
     handler: handlers/aws_health_event_publisher.handler
@@ -41,6 +40,12 @@ functions:
     environment:
       AWS_SNS_TOPIC_ARN:
         Ref: HealthEventSnsTopic
+    events:
+      - cloudwatchEvent:
+          event:
+            source:
+              - "aws.health"
+
 
 resources:
   Resources:
