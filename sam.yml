@@ -41,4 +41,5 @@ Outputs:
     Value:
       Ref: HealthEventSnsTopic
     Export:
-      Name: aws-health-event-to-slack-message-dev-HealthEventSnsTopicArn
+      Name:
+        Fn::Sub: ${AWS::StackName}-HealthEventSnsTopicArn
