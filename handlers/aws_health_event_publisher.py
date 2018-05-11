@@ -54,13 +54,14 @@ def _format_slack_message(event: dict) -> dict:
 
 
     event_data_fields.append(
-        _create_event_data_field('Event Type Code',
-                                 event.get('detail').get('eventTypeCode'))
+        _create_event_data_field('Event Type Category',
+                                 event.get('detail').get('eventTypeCategory'))
     )
 
     event_data_fields.append(
-        _create_event_data_field('Event Type Category',
-                                 event.get('detail').get('eventTypeCategory'))
+        _create_event_data_field('Event Type Code',
+                                 event.get('detail').get('eventTypeCode'),
+                                 False)
     )
 
 
