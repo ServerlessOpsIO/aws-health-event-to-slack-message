@@ -47,4 +47,4 @@ This application is intended to be deployed using [AWS Serverless Application Re
 
 ## Exports
 
-* __${stack_name}-${stage}-HealthEventSnsTopicArn__: AWS SNS topic ARN where health events are published to.
+* __${AWS::StackName}-HealthEventSnsTopicArn__: AWS SNS topic ARN where health events are published to.
