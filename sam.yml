@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: 'SAM template for Serverless framework service: '
+Resources:
+  HealthEventSnsTopic:
+    Type: 'AWS::SNS::Topic'
+  SnsHealthEventPublisher:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: handlers/aws_health_event_publisher.handler
+      Runtime: python3.6
+      CodeUri: >-
+        /Users/tom/Source/serverlessops/aws-health-event-publisher/.serverless/aws-health-event-to-slack-message.zip
+      Description: Receive and publish AWS Health events
+      MemorySize: 128
+      Timeout: 10
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action: 'SNS:Publish'
+              Resource:
+                Ref: HealthEventSnsTopic
+      Environment:
+        Variables:
+          LOG_LEVEL: INFO
+          AWS_SNS_TOPIC_ARN:
+            Ref: HealthEventSnsTopic
+      Events:
+        HealthEvent:
+          Type: CloudWatchEvent
+          Properties:
+            Pattern:
+              source:
+                - "aws.health"
+      Policies:
+        - S3CrudPolicy:
+            BucketName:
+              Ref: HealthEventSnsTopic
+Outputs:
+  HealthEventSnsTopicArn:
+    Description: AWS SNS Topic ARN
+    Value:
+      Ref: HealthEventSnsTopic
+    Export:
+      Name: aws-health-event-to-slack-message-dev-HealthEventSnsTopicArn

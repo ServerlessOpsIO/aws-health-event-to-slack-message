@@ -3,6 +3,7 @@ service: aws-health-event-to-slack-message
 
 plugins:
   - serverless-python-requirements
+  - serverless-sam
 
 
 custom:
