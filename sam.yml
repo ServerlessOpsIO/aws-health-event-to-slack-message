@@ -12,13 +12,6 @@ Resources:
       Description: Receive and publish AWS Health events
       MemorySize: 128
       Timeout: 10
-      Policies:
-        - Version: '2012-10-17'
-          Statement:
-            - Effect: Allow
-              Action: 'SNS:Publish'
-              Resource:
-                Ref: HealthEventSnsTopic
       Environment:
         Variables:
           LOG_LEVEL: INFO
@@ -32,7 +25,7 @@ Resources:
               source:
                 - "aws.health"
       Policies:
-        - S3CrudPolicy:
+        - SNSPublishMessagePolicy:
             BucketName:
               Ref: HealthEventSnsTopic
 Outputs:
