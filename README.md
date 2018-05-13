@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Build Status](https://travis-ci.org/ServerlessOpsIO/aws-health-event-to-slack-message.svg?branch=master)](https://travis-ci.org/ServerlessOpsIO/aws-health-event-to-slack-message)
 
-Publish an AWS Health event formatted as a Slack API _chat.postMessage_ message to an SNS topic.
+Publish an AWS Health event formatted as a Slack API _chat.postMessage_ message to an SNS topic.  **This currently supports AWS Health notifications and not issues because issues are not sent as _aws.health_ events.**
 
 ![System Architecture](/diagram.png?raw=true "System Architecture")
 
