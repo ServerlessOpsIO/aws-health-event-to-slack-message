@@ -29,7 +29,7 @@ Resources:
             TopicName:
               Fn::GetAtt:
                 - HealthEventSnsTopic
-                - Arn
+                - TopicName
 Outputs:
   HealthEventSnsTopicArn:
     Description: AWS SNS Topic ARN
