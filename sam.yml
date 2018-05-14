@@ -27,7 +27,9 @@ Resources:
       Policies:
         - SNSPublishMessagePolicy:
             TopicName:
-              Ref: HealthEventSnsTopic
+              Fn::GetAtt:
+                - HealthEventSnsTopic
+                - Arn
 Outputs:
   HealthEventSnsTopicArn:
     Description: AWS SNS Topic ARN
