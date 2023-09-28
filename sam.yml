@@ -8,7 +8,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: handlers/aws_health_event_publisher.handler
-      Runtime: python3.6
+      Runtime: python3.11
       Description: Receive and publish AWS Health events
       MemorySize: 128
       Timeout: 10
