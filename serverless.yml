@@ -19,7 +19,7 @@ provider:
   name: aws
   profile: ${self:custom.profile}
   stage: ${self:custom.stage}
-  runtime: python3.6
+  runtime: python3.11
   environment:
     LOG_LEVEL: ${self:custom.log_level}
   stackTags:
